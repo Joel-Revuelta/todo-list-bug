@@ -15,6 +15,7 @@ export class UsersService {
     async create(body: CreateUserDto) {
         const existingUser = await this.findOne(body.email);
         if (existingUser) {
+            this.logger.warn(`User with email ${body.email} already exists`);
             throw new ConflictException('User with this email already exists');
         }
 
@@ -28,6 +29,7 @@ export class UsersService {
 
         const { pass, ...result } = savedUser;
 
+        this.logger.log(`User created with email: ${result.email}`);
         return result;
     }
 

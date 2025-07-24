@@ -26,6 +26,7 @@ export class AuthService {
 
         const payload = { id: user.id, email: user.email };
 
+        this.logger.log(`User ${email} signed in successfully`);
         return {
             access_token: await this.jwtService.signAsync(payload, {
                 expiresIn: '1h',
