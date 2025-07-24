@@ -16,7 +16,7 @@ export class Task {
     done: boolean;
 
     @Column()
-    dueDate: string;
+    dueDate: Date;
 
     @ManyToOne(() => User, (user) => user.tasks)
     owner: User;
