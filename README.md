@@ -64,3 +64,27 @@ Sigue estos pasos para levantar el proyecto y trabajar en las correcciones neces
 ---
 
 ¡Listo! Ahora puedes empezar a trabajar en los errores y enviar tu contribución para asegurar que la aplicación funcione correctamente y sin vulnerabilidades.
+
+---
+
+## ✨ **Mejoras Realizadas**
+
+A continuación se detallan las mejoras y correcciones implementadas en el proyecto para solucionar las vulnerabilidades y mejorar la calidad del código:
+
+### 🔐 **Seguridad y Autenticación**
+
+- **Protección de Rutas**: Se ha implementado `AuthGuard` en los controladores de `tasks` y `users` para proteger las rutas sensibles, asegurando que solo los usuarios autenticados puedan acceder a ellas.
+- **Autorización por Propietario**: Se ha corregido la lógica para que solo el propietario de una tarea pueda verla y editarla, evitando que otros usuarios accedan a datos que no les pertenecen.
+- **Manejo de Errores**: Se ha mejorado el manejo de errores para devolver los códigos de estado HTTP adecuados, como `403 Forbidden` cuando un usuario intenta acceder a recursos sin permisos, `404 Not Found` cuando una tarea no se encuentra, y `409 Conflict` al intentar crear un usuario con un email que ya existe.
+
+### 📝 **Documentación y DTOs**
+
+- **Documentación de la API**: Se ha integrado Swagger para generar una documentación completa y clara de la API.
+- **DTOs de Respuesta**: Se han añadido DTOs (`AuthResponseDto`, `TaskResponseDto`, `UserResponseDto`) y se han utilizado los decoradores `@ApiResponse` para definir los esquemas de respuesta de la API, mejorando la claridad y predictibilidad de los endpoints.
+
+### ⚙️ **Calidad del Código y Pruebas**
+
+- **Pruebas Unitarias**: Se han añadido y corregido pruebas unitarias para todos los servicios (`AuthService`, `TasksService`, `UsersService`), asegurando la calidad y el correcto funcionamiento del código.
+- **Logging**: Se ha añadido un sistema de logging en los servicios para registrar eventos importantes, como la creación de usuarios o la consulta de tareas, facilitando la depuración y el mantenimiento.
+- **Refactorización**: Se ha refactorizado el código para seguir las mejores prácticas, como el uso de los métodos del repositorio para la creación de entidades.
+- **Integridad de Datos**: Se ha añadido una restricción de unicidad en el email del usuario para evitar la creación de cuentas duplicadas.
