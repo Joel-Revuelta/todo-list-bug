@@ -18,10 +18,11 @@ export class UsersService {
             throw new ConflictException('User with this email already exists');
         }
 
-        const user = new User();
-        user.email = body.email;
-        user.pass = body.password;
-        user.fullname = body.fullname;
+        const user = this.usersRepository.create({
+            email: body.email,
+            fullname: body.fullname,
+            pass: body.password,
+        });
 
         const savedUser = await this.usersRepository.save(user);
 
